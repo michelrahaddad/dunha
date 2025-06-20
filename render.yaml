@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: cartao-vidah
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: cartao-vidah-super-secret-key-2025-secure
+      - key: WHATSAPP_PHONE_NUMBER
+        value: "5516997782211"
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD_HASH
+        value: vidah2025
+    healthCheckPath: /health
+
+databases:
+  - name: cartao-vidah-db
+    databaseName: cartao_vidah
+    user: cartao_vidah_user
+    region: oregon
+    plan: free

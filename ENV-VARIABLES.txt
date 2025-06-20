@@ -1,0 +1,15 @@
+# VARIÁVEIS DE AMBIENTE PARA RENDER
+# Copie e cole cada linha no painel Environment do Render
+
+NODE_ENV=production
+DATABASE_URL=postgresql://username:password@host:port/database
+JWT_SECRET=cartao-vidah-super-secret-key-2025-secure
+WHATSAPP_PHONE_NUMBER=5516997782211
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD_HASH=vidah2025
+
+# OBSERVAÇÕES:
+# 1. Substitua DATABASE_URL pela URL real gerada pelo PostgreSQL do Render
+# 2. A URL do PostgreSQL estará disponível após criar o banco de dados
+# 3. Use a "Internal Database URL" para melhor performance
+# 4. Todas as outras variáveis podem ser copiadas exatamente como estão
