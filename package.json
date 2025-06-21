@@ -48,6 +48,7 @@
     "@replit/vite-plugin-cartographer": "latest",
     "@replit/vite-plugin-runtime-error-modal": "latest",
     "@tailwindcss/typography": "latest",
+    "@tailwindcss/postcss": "latest",
     "@tailwindcss/vite": "latest",
     "@tanstack/react-query": "latest",
     "@types/bcrypt": "latest",
