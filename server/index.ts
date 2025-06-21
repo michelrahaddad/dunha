@@ -16,6 +16,15 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from client/dist FIRST
 app.use(express.static(path.join(process.cwd(), 'client/dist')));
 
+// Health check endpoint for Render
+app.get("/health", (req, res) => {
+  res.status(200).json({ 
+    status: "healthy", 
+    service: "cartao-vidah", 
+    timestamp: new Date().toISOString() 
+  });
+});
+
 (async () => {
   try {
     // Register API routes first
@@ -23,8 +32,8 @@ app.use(express.static(path.join(process.cwd(), 'client/dist')));
     
     // Serve React app for all non-API routes
     app.get('*', (req, res) => {
-      // Skip API routes and health check
-      if (req.path.startsWith('/api/') || req.path === '/health' || req.path.includes('.zip')) {
+      // Skip API routes
+      if (req.path.startsWith('/api/') || req.path === '/health') {
         return;
       }
       res.sendFile(path.join(process.cwd(), 'client/dist/index.html'));
@@ -38,9 +47,8 @@ app.use(express.static(path.join(process.cwd(), 'client/dist')));
 
     // Start server on Render port
     const port = parseInt(process.env.PORT || '10000');
-    server.listen(port, '0.0.0.0', () => {
+    server.listen(port, () => {
       console.log(`Server running on port ${port}`);
-      console.log(`Frontend: http://0.0.0.0:${port}/`);
       console.log(`Health check: http://0.0.0.0:${port}/health`);
     });
 
