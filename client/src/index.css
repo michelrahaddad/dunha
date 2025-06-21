@@ -1,4 +1,4 @@
-/* Reset CSS básico */
+/* CSS Reset e Base */
 * {
   margin: 0;
   padding: 0;
@@ -6,22 +6,19 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f8f9fa;
 }
 
-/* Container básico */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Botões */
+/* Buttons */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -31,6 +28,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
+  font-size: 16px;
 }
 
 .btn-primary {
@@ -52,6 +50,11 @@ body {
   color: white;
 }
 
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
 /* Cards */
 .card {
   background: white;
@@ -61,10 +64,24 @@ body {
   margin-bottom: 20px;
 }
 
-/* Layout */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Grid Layout */
 .grid {
   display: grid;
   gap: 24px;
+}
+
+.grid-cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-cols-3 {
@@ -72,14 +89,19 @@ body {
 }
 
 @media (max-width: 768px) {
+  .grid-cols-2,
   .grid-cols-3 {
     grid-template-columns: 1fr;
   }
 }
 
-/* Text utilities */
+/* Typography */
 .text-center {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-xl {
@@ -94,17 +116,41 @@ body {
   font-size: 1.875rem;
 }
 
+.text-4xl {
+  font-size: 2.25rem;
+}
+
 .font-bold {
   font-weight: bold;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
 /* Spacing */
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .p-4 {
@@ -113,6 +159,21 @@ body {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 /* Colors */
@@ -124,12 +185,32 @@ body {
   color: #3498db;
 }
 
+.text-red-600 {
+  color: #e74c3c;
+}
+
+.text-gray-600 {
+  color: #6c757d;
+}
+
+.text-white {
+  color: white;
+}
+
 .bg-green-50 {
   background-color: #f0fff4;
 }
 
 .bg-blue-50 {
   background-color: #eff6ff;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-gray-50 {
+  background-color: #f8f9fa;
 }
 
 /* Forms */
@@ -139,6 +220,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 16px;
+  transition: border-color 0.2s ease;
 }
 
 .form-input:focus {
@@ -147,11 +229,20 @@ body {
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-/* Header styles */
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Header */
 .header {
   background: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav {
@@ -166,7 +257,7 @@ body {
   color: #16a085;
 }
 
-/* Hero section */
+/* Hero Section */
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -177,11 +268,13 @@ body {
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
 /* Footer */
@@ -193,7 +286,52 @@ body {
   margin-top: 4rem;
 }
 
+/* Utilities */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.rounded {
+  border-radius: 0.375rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive */
+.hidden {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
@@ -206,4 +344,88 @@ body {
   .container {
     padding: 0 15px;
   }
+  
+  .md\:hidden {
+    display: none;
+  }
+  
+  .sm\:block {
+    display: block;
+  }
+}
+
+/* Plan Cards Specific */
+.plan-card {
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
+
+.plan-card.featured {
+  border-color: #28a745;
+  position: relative;
+}
+
+.plan-card.featured::before {
+  content: "Mais Popular";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #28a745;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Admin Dashboard */
+.admin-nav {
+  background: #343a40;
+  color: white;
+  padding: 1rem;
+}
+
+.admin-content {
+  padding: 2rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.stat-label {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Loading States */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
