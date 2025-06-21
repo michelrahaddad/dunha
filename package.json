@@ -60,6 +60,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.0",
     "react-icons": "^4.11.0",
+    "tailwind-merge": "^2.0.0",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vite": "^5.0.0",
