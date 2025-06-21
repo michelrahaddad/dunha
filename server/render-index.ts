@@ -13,8 +13,9 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from client/dist FIRST
-app.use(express.static(path.join(process.cwd(), 'client/dist')));
+// Serve static files from client/dist
+const staticPath = path.join(__dirname, '..', 'client', 'dist');
+app.use(express.static(staticPath));
 
 (async () => {
   try {
@@ -27,7 +28,7 @@ app.use(express.static(path.join(process.cwd(), 'client/dist')));
       if (req.path.startsWith('/api/') || req.path === '/health' || req.path.includes('.zip')) {
         return;
       }
-      res.sendFile(path.join(process.cwd(), 'client/dist/index.html'));
+      res.sendFile(path.join(staticPath, 'index.html'));
     });
 
     // Error handler
